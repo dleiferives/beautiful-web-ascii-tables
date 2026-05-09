@@ -153,6 +153,29 @@
 
       var fs_h = H / (lines.length * lh);
       if (fs_h >= fs - 0.5) break;
+
+      // Before shrinking font, try removing padding from any columns that still have it.
+      if (padding > 0) {
+        var innerTotal0 = Math.max(N, Math.floor(W / cw) - (N + 1));
+        var colWidths0 = [], assigned0 = 0;
+        for (var k0 = 0; k0 < N; k0++) {
+          var inner0 = (k0 === N - 1)
+            ? Math.max(minInner[k0], innerTotal0 - assigned0)
+            : Math.max(minInner[k0], Math.round(colPx[k0] / pxTotal * innerTotal0));
+          colWidths0.push(inner0);
+          if (k0 < N - 1) assigned0 += inner0;
+        }
+        var lines0 = buildLines(rows, colWidths0, 0, sepEvery);
+        var fs_h0 = H / (lines0.length * lh);
+        if (fs_h0 > fs_h) {
+          padding = 0;
+          colWidths = colWidths0;
+          lines = lines0;
+          fs_h = fs_h0;
+        }
+      }
+
+      if (fs_h >= fs - 0.5) break;
       fs = Math.max(FS_MIN, fs_h);
     }
 
