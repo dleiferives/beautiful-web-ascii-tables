@@ -8,6 +8,7 @@
     body { font-family: sans-serif; padding: 2rem; }
     h2 { margin-top: 2.5rem; }
     p  { max-width: 60ch; }
+    code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; }
 
     /* flex stress test */
     .flex-row { display: flex; gap: 1rem; }
@@ -23,6 +24,11 @@
       min-width: 200px;
       max-width: 100%;
     }
+
+    /* style showcase grid */
+    .style-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .style-grid label { font-weight: bold; font-size: 0.85rem; color: #555; display: block; margin-bottom: 0.25rem; }
+    @media (max-width: 700px) { .style-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -31,6 +37,185 @@
 <p>Add <code>data-ascii</code> to any <code>&lt;table&gt;</code>.
    The table drives column widths; the ASCII art overlays it.
    Select-all + copy gives you plain-text ASCII.</p>
+
+<p>Use <code>data-ascii="style-name"</code> to pick a style.
+   Use <code>data-ascii-header="false"</code> to treat all rows as data.</p>
+
+<h2>Style showcase</h2>
+<div class="style-grid">
+
+  <div>
+    <label><code>data-ascii</code> or <code>data-ascii="classic"</code></label>
+    <table data-ascii="classic">
+      <thead><tr><th>Name</th><th>Score</th><th>Grade</th></tr></thead>
+      <tbody>
+        <tr><td>Alice</td><td>95</td><td>A</td></tr>
+        <tr><td>Bob</td><td>82</td><td>B</td></tr>
+        <tr><td>Carol</td><td>74</td><td>C</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <label><code>data-ascii="double"</code></label>
+    <table data-ascii="double">
+      <thead><tr><th>Name</th><th>Score</th><th>Grade</th></tr></thead>
+      <tbody>
+        <tr><td>Alice</td><td>95</td><td>A</td></tr>
+        <tr><td>Bob</td><td>82</td><td>B</td></tr>
+        <tr><td>Carol</td><td>74</td><td>C</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <label><code>data-ascii="dots"</code></label>
+    <table data-ascii="dots">
+      <thead><tr><th>Name</th><th>Score</th><th>Grade</th></tr></thead>
+      <tbody>
+        <tr><td>Alice</td><td>95</td><td>A</td></tr>
+        <tr><td>Bob</td><td>82</td><td>B</td></tr>
+        <tr><td>Carol</td><td>74</td><td>C</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <label><code>data-ascii="brackets"</code></label>
+    <table data-ascii="brackets">
+      <thead><tr><th>Name</th><th>Score</th><th>Grade</th></tr></thead>
+      <tbody>
+        <tr><td>Alice</td><td>95</td><td>A</td></tr>
+        <tr><td>Bob</td><td>82</td><td>B</td></tr>
+        <tr><td>Carol</td><td>74</td><td>C</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <label><code>data-ascii="rounded"</code></label>
+    <table data-ascii="rounded">
+      <thead><tr><th>Name</th><th>Score</th><th>Grade</th></tr></thead>
+      <tbody>
+        <tr><td>Alice</td><td>95</td><td>A</td></tr>
+        <tr><td>Bob</td><td>82</td><td>B</td></tr>
+        <tr><td>Carol</td><td>74</td><td>C</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <label><code>data-ascii="mysql"</code></label>
+    <table data-ascii="mysql">
+      <thead><tr><th>Name</th><th>Score</th><th>Grade</th></tr></thead>
+      <tbody>
+        <tr><td>Alice</td><td>95</td><td>A</td></tr>
+        <tr><td>Bob</td><td>82</td><td>B</td></tr>
+        <tr><td>Carol</td><td>74</td><td>C</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <label><code>data-ascii="github"</code></label>
+    <table data-ascii="github">
+      <thead><tr><th>Name</th><th>Score</th><th>Grade</th></tr></thead>
+      <tbody>
+        <tr><td>Alice</td><td>95</td><td>A</td></tr>
+        <tr><td>Bob</td><td>82</td><td>B</td></tr>
+        <tr><td>Carol</td><td>74</td><td>C</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <label><code>data-ascii="rst"</code></label>
+    <table data-ascii="rst">
+      <thead><tr><th>Name</th><th>Score</th><th>Grade</th></tr></thead>
+      <tbody>
+        <tr><td>Alice</td><td>95</td><td>A</td></tr>
+        <tr><td>Bob</td><td>82</td><td>B</td></tr>
+        <tr><td>Carol</td><td>74</td><td>C</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <label><code>data-ascii="grid"</code></label>
+    <table data-ascii="grid">
+      <thead><tr><th>Name</th><th>Score</th><th>Grade</th></tr></thead>
+      <tbody>
+        <tr><td>Alice</td><td>95</td><td>A</td></tr>
+        <tr><td>Bob</td><td>82</td><td>B</td></tr>
+        <tr><td>Carol</td><td>74</td><td>C</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <label><code>data-ascii="outline"</code></label>
+    <table data-ascii="outline">
+      <thead><tr><th>Name</th><th>Score</th><th>Grade</th></tr></thead>
+      <tbody>
+        <tr><td>Alice</td><td>95</td><td>A</td></tr>
+        <tr><td>Bob</td><td>82</td><td>B</td></tr>
+        <tr><td>Carol</td><td>74</td><td>C</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <label><code>data-ascii="minimal"</code></label>
+    <table data-ascii="minimal">
+      <thead><tr><th>Name</th><th>Score</th><th>Grade</th></tr></thead>
+      <tbody>
+        <tr><td>Alice</td><td>95</td><td>A</td></tr>
+        <tr><td>Bob</td><td>82</td><td>B</td></tr>
+        <tr><td>Carol</td><td>74</td><td>C</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <label><code>data-ascii="header-bar"</code></label>
+    <table data-ascii="header-bar">
+      <thead><tr><th>Name</th><th>Score</th><th>Grade</th></tr></thead>
+      <tbody>
+        <tr><td>Alice</td><td>95</td><td>A</td></tr>
+        <tr><td>Bob</td><td>82</td><td>B</td></tr>
+        <tr><td>Carol</td><td>74</td><td>C</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<h2>No header row — <code>data-ascii-header="false"</code></h2>
+<table data-ascii="classic" data-ascii-header="false">
+  <tbody>
+    <tr><td>Alice</td><td>95</td><td>A</td></tr>
+    <tr><td>Bob</td><td>82</td><td>B</td></tr>
+    <tr><td>Carol</td><td>74</td><td>C</td></tr>
+  </tbody>
+</table>
+
+<h2>Custom style via JS</h2>
+<p>Register a custom style before calling <code>.asciiTable()</code>:</p>
+<pre style="background:#f5f5f5;padding:1rem;border-radius:4px;font-size:0.85rem">$.fn.asciiTable.styles['my-style'] = {
+  top:  { l:'*', f:'*', s:'*', r:'*' },
+  hdr:  { l:'*', f:'-', s:'+', r:'*' },
+  row:  null,
+  bot:  { l:'*', f:'*', s:'*', r:'*' },
+  cell: { l:'|', s:'|', r:'|' },
+};</pre>
+<table id="custom-style-demo">
+  <thead><tr><th>Name</th><th>Score</th><th>Grade</th></tr></thead>
+  <tbody>
+    <tr><td>Alice</td><td>95</td><td>A</td></tr>
+    <tr><td>Bob</td><td>82</td><td>B</td></tr>
+    <tr><td>Carol</td><td>74</td><td>C</td></tr>
+  </tbody>
+</table>
 
 <h2>Example from the docs</h2>
 
@@ -77,22 +262,9 @@
   </tbody>
 </table>
 
-<h2>Simple table</h2>
-
-<table data-ascii>
-  <thead>
-    <tr><th>Name</th><th>Age</th><th>City</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Alice</td><td>30</td><td>New York</td></tr>
-    <tr><td>Bob</td><td>25</td><td>London</td></tr>
-    <tr><td>Carol</td><td>35</td><td>Tokyo</td></tr>
-  </tbody>
-</table>
-
 <h2>Flex row — two tables side-by-side</h2>
 <div class="flex-row">
-  <table data-ascii>
+  <table data-ascii="double">
     <thead><tr><th>Item</th><th>Price</th></tr></thead>
     <tbody>
       <tr><td>Apple</td><td>$1.20</td></tr>
@@ -100,7 +272,7 @@
       <tr><td>Cherry</td><td>$3.00</td></tr>
     </tbody>
   </table>
-  <table data-ascii>
+  <table data-ascii="github">
     <thead><tr><th>Lang</th><th>Stars</th><th>License</th></tr></thead>
     <tbody>
       <tr><td>Rust</td><td>92k</td><td>MIT</td></tr>
@@ -112,7 +284,7 @@
 
 <h2>Resizable container (drag the handle)</h2>
 <div class="resizable">
-  <table data-ascii style="width:100%">
+  <table data-ascii="rst" style="width:100%">
     <thead><tr><th>Column A</th><th>Col B</th><th>Column C</th></tr></thead>
     <tbody>
       <tr><td>Longer value here</td><td>42</td><td>Short</td></tr>
@@ -123,5 +295,16 @@
 
 <script src="jquery.min.js"></script>
 <script src="ascii-table.js"></script>
+<script>
+  // Register a custom style, then manually init the table that uses it.
+  $.fn.asciiTable.styles['my-style'] = {
+    top:  { l:'*', f:'*', s:'*', r:'*' },
+    hdr:  { l:'*', f:'-', s:'+', r:'*' },
+    row:  null,
+    bot:  { l:'*', f:'*', s:'*', r:'*' },
+    cell: { l:'|', s:'|', r:'|' },
+  };
+  $('#custom-style-demo').attr('data-ascii', 'my-style').asciiTable();
+</script>
 </body>
 </html>
