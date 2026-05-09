@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ascii-table demo</title>
+  <link rel="stylesheet" href="ascii-table.css">
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h2 { margin-top: 2.5rem; }
+    p  { max-width: 60ch; }
+
+    /* flex stress test */
+    .flex-row { display: flex; gap: 1rem; }
+    .flex-row > * { flex: 1; min-width: 0; }
+
+    /* resizable box stress test */
+    .resizable {
+      resize: horizontal;
+      overflow: auto;
+      border: 1px dashed #aaa;
+      padding: 0.5rem;
+      width: 600px;
+      min-width: 200px;
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<h1>ascii-table</h1>
+<p>Add <code>data-ascii</code> to any <code>&lt;table&gt;</code>.
+   The table drives column widths; the ASCII art overlays it.
+   Select-all + copy gives you plain-text ASCII.</p>
+
+<h2>Example from the docs</h2>
+
+<table data-ascii style="background: lightpink;">
+  <thead>
+    <tr>
+      <th>Expression (abbreviated)</th>
+      <th>ns/call</th>
+      <th>Speedup</th>
+      <th>MAE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>s + (abs((5.72-m)+x) * ... greater(x+1.00,m) ...)</code></td>
+      <td>4.59</td>
+      <td><strong>5.3×</strong></td>
+      <td>1.04e-3</td>
+    </tr>
+    <tr>
+      <td><code>s + abs(((5.72-m)+x) * ... greater(x+0.88,m) ...)</code></td>
+      <td>4.86</td>
+      <td>5.0×</td>
+      <td>1.04e-3</td>
+    </tr>
+    <tr>
+      <td><code>(... abs((5.5-m)+x) ... greater(x+1.0,m) ...) + s</code></td>
+      <td>5.45</td>
+      <td>4.5×</td>
+      <td>9.49e-4</td>
+    </tr>
+    <tr>
+      <td>slowest in accuracy tier</td>
+      <td>7.13</td>
+      <td>3.4×</td>
+      <td>1.03e-3</td>
+    </tr>
+    <tr>
+      <td>Baseline (2× std::exp)</td>
+      <td>24.40</td>
+      <td>1×</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Simple table</h2>
+
+<table data-ascii>
+  <thead>
+    <tr><th>Name</th><th>Age</th><th>City</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Alice</td><td>30</td><td>New York</td></tr>
+    <tr><td>Bob</td><td>25</td><td>London</td></tr>
+    <tr><td>Carol</td><td>35</td><td>Tokyo</td></tr>
+  </tbody>
+</table>
+
+<h2>Flex row — two tables side-by-side</h2>
+<div class="flex-row">
+  <table data-ascii>
+    <thead><tr><th>Item</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr><td>Apple</td><td>$1.20</td></tr>
+      <tr><td>Banana</td><td>$0.50</td></tr>
+      <tr><td>Cherry</td><td>$3.00</td></tr>
+    </tbody>
+  </table>
+  <table data-ascii>
+    <thead><tr><th>Lang</th><th>Stars</th><th>License</th></tr></thead>
+    <tbody>
+      <tr><td>Rust</td><td>92k</td><td>MIT</td></tr>
+      <tr><td>Go</td><td>118k</td><td>BSD</td></tr>
+      <tr><td>Zig</td><td>34k</td><td>MIT</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>Resizable container (drag the handle)</h2>
+<div class="resizable">
+  <table data-ascii style="width:100%">
+    <thead><tr><th>Column A</th><th>Col B</th><th>Column C</th></tr></thead>
+    <tbody>
+      <tr><td>Longer value here</td><td>42</td><td>Short</td></tr>
+      <tr><td>Another row</td><td>7</td><td>Medium val</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="jquery.min.js"></script>
+<script src="ascii-table.js"></script>
+</body>
+</html>

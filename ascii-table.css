@@ -1,0 +1,38 @@
+/* ── Wrapper ────────────────────────────────────────────────────────────────
+   Shrinks to the table's natural width (fit-content).  In flex/grid containers
+   the layout algorithm overrides this and stretches it normally.
+   overflow:hidden prevents the 1-2px rounding spill on the right edge.      */
+.ascii-table-wrapper {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* ── Hidden source table ────────────────────────────────────────────────────
+   We only hide it visually.  Font, layout, everything else is left exactly
+   as the author wrote it — we just read its geometry.                       */
+.ascii-table-source {
+  visibility: hidden;
+}
+
+/* ── ASCII overlay ──────────────────────────────────────────────────────────
+   Absolutely covers the wrapper.  font-size is set inline by JS to match
+   the source table.  pointer-events + user-select make it selectable/copyable
+   (the hidden table can't receive events anyway).                            */
+.ascii-table-pre {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  /* line-height set dynamically by solver */
+  white-space: pre;
+  background: transparent;
+  color: inherit;
+  pointer-events: auto;
+  user-select: text;
+  cursor: text;
+}
