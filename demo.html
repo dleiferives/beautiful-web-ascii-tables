@@ -16,19 +16,30 @@
 
     /* resizable box stress test */
     .resizable {
-      resize: horizontal;
+      resize: both;
       overflow: auto;
       border: 1px dashed #aaa;
       padding: 0.5rem;
       width: 600px;
+      height: 140px;
       min-width: 200px;
+      min-height: 80px;
       max-width: 100%;
     }
+    /* Make the wrapper (and so the source table inside it) fill the
+       resizable so dragging the corner actually changes the source's
+       measured dimensions — that's what the solver matches against. */
+    .resizable > .ascii-table-wrapper { width: 100%; height: 100%; }
+    .resizable > .ascii-table-wrapper > .ascii-table-source { height: 100%; }
 
     /* style showcase grid */
     .style-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .style-grid label { font-weight: bold; font-size: 0.85rem; color: #555; display: block; margin-bottom: 0.25rem; }
     @media (max-width: 700px) { .style-grid { grid-template-columns: 1fr; } }
+
+    /* DEBUG: show the source table behind the ASCII overlay */
+    .ascii-table-source { visibility: visible !important; opacity: 0.35; }
+    .ascii-table-source th, .ascii-table-source td { border: 1px dashed #c33; padding: 2px 4px; }
   </style>
 </head>
 <body>
@@ -40,6 +51,17 @@
 
 <p>Use <code>data-ascii="style-name"</code> to pick a style.
    Use <code>data-ascii-header="false"</code> to treat all rows as data.</p>
+
+<h2>Resizable container (drag the handle)</h2>
+<div class="resizable">
+  <table data-ascii="rst" style="width:100%; height:100%">
+    <thead><tr><th>Column A</th><th>Col B</th><th>Column C</th></tr></thead>
+    <tbody>
+      <tr><td>Longer value here</td><td>42</td><td>Short</td></tr>
+      <tr><td>Another row</td><td>7</td><td>Medium val</td></tr>
+    </tbody>
+  </table>
+</div>
 
 <h2>Style showcase</h2>
 <div class="style-grid">
@@ -278,17 +300,6 @@
       <tr><td>Rust</td><td>92k</td><td>MIT</td></tr>
       <tr><td>Go</td><td>118k</td><td>BSD</td></tr>
       <tr><td>Zig</td><td>34k</td><td>MIT</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<h2>Resizable container (drag the handle)</h2>
-<div class="resizable">
-  <table data-ascii="rst" style="width:100%">
-    <thead><tr><th>Column A</th><th>Col B</th><th>Column C</th></tr></thead>
-    <tbody>
-      <tr><td>Longer value here</td><td>42</td><td>Short</td></tr>
-      <tr><td>Another row</td><td>7</td><td>Medium val</td></tr>
     </tbody>
   </table>
 </div>
